@@ -54,7 +54,8 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:stateListAnimator="@null"
-                />
+                android:enabled="false"
+                android:clickable="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:background="@drawable/button_background"
@@ -261,7 +262,9 @@
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:textColor="@color/textColor"
-                android:stateListAnimator="@null" />
+                android:stateListAnimator="@null"
+                android:enabled="false"
+                android:clickable="false" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:background="@drawable/button_background"
