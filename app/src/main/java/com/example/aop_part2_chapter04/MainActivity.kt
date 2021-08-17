@@ -7,6 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
+
+
+    private val resultTxt: TextView by lazy{
+        findViewById<TextView>(R.id.resultTxt)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    private val expressionTextView: TextView by lazy{
+        findViewById<TextView>(R.id.expressionTxt)
+    }
+
 
     private fun numberButtonClicked(number: String) {
 
