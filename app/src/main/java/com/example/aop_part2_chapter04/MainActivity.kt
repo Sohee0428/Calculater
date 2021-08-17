@@ -37,6 +37,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun numberButtonClicked(number: String) {
 
+        val expressionTxt = expressionTextView.text.split(" ")
+        if(expressionTxt.isNotEmpty() && expressionTxt.last().length >= 15) {
+            Toast.makeText(this, "15자리 까지만 사용할 수 있습니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        expressionTextView.append(number)
+
+//        TODO resultTxt 실시간으로 계산 결과를 넣어햐 하는 기능
     }
 
     private fun operatorButtonClicked(operator: String) {
