@@ -52,6 +52,14 @@ class MainActivity : AppCompatActivity() {
     private var isOperator = false
     private var hasOperator = false
 
+    private val historyLayout: View by lazy {
+        findViewById<View>(R.id.historyLayout)
+    }
+
+    private val historyLinearLayout: View by lazy {
+        findViewById<View>(R.id.historyLinearLayout)
+    }
+
     private fun numberButtonClicked(number: String) {
 
         if (isOperator) {
@@ -169,7 +177,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun historyButtonClicked(v: View) {
+        historyLayout.isVisible = true
 
+
+        //        TODO 디비에서 모든 기록 가져오기
+        //        TODO 뷰에서 모든 기록 할당하기기
     }
 
+    fun closeHistoryBtnClicked(v: View) {
+        historyLayout.isVisible = false
+    }
+
+    fun historyClearBtnClicked(v: View) {
+
+//        TODO 디비에서 모든 기록 삭제
+//        TODO 뷰에서 모든 기록 삭제
+    }
+
+}
+
+fun String.isNumber(): Boolean {
+    return try {
+        this.toBigInteger()
+        true
+    } catch (e: NumberFormatException) {
+        false
+    }
 }
