@@ -162,7 +162,10 @@ class MainActivity : AppCompatActivity() {
 
 
     fun clearButtonClicked(v: View) {
-
+        expressionTextView.text = ""
+        resultTxt.text = ""
+        isOperator = false
+        hasOperator = false
     }
 
     fun historyButtonClicked(v: View) {
