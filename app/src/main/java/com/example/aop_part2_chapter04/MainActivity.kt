@@ -78,7 +78,39 @@ class MainActivity : AppCompatActivity() {
 
     private fun operatorButtonClicked(operator: String) {
 
+        if (expressionTextView.text.isEmpty()) {
+            return
+        }
+
+        when {
+            isOperator -> {
+                val text = expressionTextView.text.toString()
+                expressionTextView.text = text.dropLast(1) + operator
+            }
+            hasOperator -> {
+                Toast.makeText(this, "연산자는 한 번만 사용할 수 있습니다.", Toast.LENGTH_SHORT).show()
+                return
+            }
+            else -> {
+                expressionTextView.append(" $operator")
+            }
+        }
+
+        val ssb = SpannableStringBuilder(expressionTextView.text)
+        ssb.setSpan(
+            ForegroundColorSpan(getColor(R.color.green)),
+            expressionTextView.text.length - 1,
+            expressionTextView.text.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        expressionTextView.text = ssb
+
+        isOperator = true
+        hasOperator = true
     }
+
+
 
     fun resultButtonClicked(v: View) {
 
