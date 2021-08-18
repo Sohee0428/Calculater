@@ -2,14 +2,18 @@ package com.example.aop_part2_chapter04
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
 
 
-    private val resultTxt: TextView by lazy{
+    private val resultTxt: TextView by lazy {
         findViewById<TextView>(R.id.resultTxt)
     }
 
@@ -40,22 +44,36 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private val expressionTextView: TextView by lazy{
+
+    private val expressionTextView: TextView by lazy {
         findViewById<TextView>(R.id.expressionTxt)
     }
 
+    private var isOperator = false
+    private var hasOperator = false
 
     private fun numberButtonClicked(number: String) {
 
+        if (isOperator) {
+            expressionTextView.append(" ")
+        }
+
+        isOperator = false
+
         val expressionTxt = expressionTextView.text.split(" ")
-        if(expressionTxt.isNotEmpty() && expressionTxt.last().length >= 15) {
+        if (expressionTxt.isNotEmpty() && expressionTxt.last().length >= 15) {
             Toast.makeText(this, "15자리 까지만 사용할 수 있습니다.", Toast.LENGTH_SHORT).show()
+            return
+        } else if (expressionTxt.last().isEmpty() && number == "0") {
+            Toast.makeText(this, "0은 제일 앞에 올 수 없습니다.", Toast.LENGTH_SHORT).show()
             return
         }
 
         expressionTextView.append(number)
 
 //        TODO resultTxt 실시간으로 계산 결과를 넣어햐 하는 기능
+
+        resultTxt.text = calculateExpression()
     }
 
     private fun operatorButtonClicked(operator: String) {
