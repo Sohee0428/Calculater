@@ -14,4 +14,8 @@ interface HistoryDao {
     @Insert
     fun insertHistory(history: History)
 
+    @Query("DELETE FROM history")
+    fun deleteAll()
+
+
 }
