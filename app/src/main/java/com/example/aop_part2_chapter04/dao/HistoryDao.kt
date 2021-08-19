@@ -7,5 +7,9 @@ import com.example.aop_part2_chapter04.model.History
 @Dao
 interface HistoryDao {
 
+    @Query("SELECT * FROM history")
+    fun getAll(): List<History>
+
+
 
 }
