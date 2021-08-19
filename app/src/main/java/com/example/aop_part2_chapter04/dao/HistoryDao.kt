@@ -18,9 +18,9 @@ interface HistoryDao {
     @Query("DELETE FROM history")
     fun deleteAll()
 
-    @Delete
-    fun delete(history: History)
-
-    @Query("SELECT * FROM history WHERE result LIKE :result LIMIT 1")
-    fun findByResult(result: String): History
+//    @Delete
+//    fun delete(history: History)
+//
+//    @Query("SELECT * FROM history WHERE result LIKE :result LIMIT 1")
+//    fun findByResult(result: String): History
 }
