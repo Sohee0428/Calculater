@@ -6,6 +6,7 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -30,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.historyLayout)
     }
 
-    private val historyLinearLayout: View by lazy {
-        findViewById<View>(R.id.historyLinearLayout)
+    private val historyLinearLayout: LinearLayout by lazy {
+        findViewById<LinearLayout>(R.id.historyLinearLayout)
     }
 
     lateinit var db: AppDatabase
@@ -195,9 +196,19 @@ class MainActivity : AppCompatActivity() {
 
     fun historyButtonClicked(v: View) {
         historyLayout.isVisible = true
+        historyLinearLayout.removeAllViews()
 
 
         //        TODO 디비에서 모든 기록 가져오기
+
+        Thread(Runnable {
+            db.historyDao().getAll().reversed().forEach {
+
+
+
+            }
+        }).start()
+
         //        TODO 뷰에서 모든 기록 할당하기기
     }
 
