@@ -12,6 +12,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/keypadTableLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="1" />
@@ -324,13 +325,26 @@
         android:id="@+id/historyLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/white"
+        android:background="@drawable/history_background"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/keypadTableLayout"
+        android:layout_margin="3dp"
         tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text=" History "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/scrollView"
+            app:layout_constraintEnd_toStartOf="@id/closeBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/historyLayout" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/closeBtn"
@@ -341,12 +355,13 @@
             android:stateListAnimator="@null"
             android:text="닫기"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"

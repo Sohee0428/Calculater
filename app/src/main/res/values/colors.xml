@@ -14,4 +14,5 @@
     <color name="textColor">#555555</color>
     <color name="green">#7aaf3b</color>
     <color name="greenPress">#618c2f</color>
+    <color name="gray">#E1E1E1</color>
 </resources>
