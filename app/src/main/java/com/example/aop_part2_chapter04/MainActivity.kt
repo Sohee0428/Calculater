@@ -17,6 +17,24 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.resultTxt)
     }
 
+    private val expressionTextView: TextView by lazy {
+        findViewById<TextView>(R.id.expressionTxt)
+    }
+
+    private var isOperator = false
+    private var hasOperator = false
+
+    private val historyLayout: View by lazy {
+        findViewById<View>(R.id.historyLayout)
+    }
+
+    private val historyLinearLayout: View by lazy {
+        findViewById<View>(R.id.historyLinearLayout)
+    }
+
+    lateinit var db: AppDatabase
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,20 +63,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private val expressionTextView: TextView by lazy {
-        findViewById<TextView>(R.id.expressionTxt)
-    }
-
-    private var isOperator = false
-    private var hasOperator = false
-
-    private val historyLayout: View by lazy {
-        findViewById<View>(R.id.historyLayout)
-    }
-
-    private val historyLinearLayout: View by lazy {
-        findViewById<View>(R.id.historyLinearLayout)
-    }
 
     private fun numberButtonClicked(number: String) {
 
