@@ -229,7 +229,14 @@ class MainActivity : AppCompatActivity() {
     fun historyClearBtnClicked(v: View) {
 
 //        TODO 디비에서 모든 기록 삭제
+
+        Thread(Runnable {
+            db.historyDao().deleteAll()
+        }).start()
+
 //        TODO 뷰에서 모든 기록 삭제
+
+        historyLinearLayout.removeAllViews()
     }
 
 }
