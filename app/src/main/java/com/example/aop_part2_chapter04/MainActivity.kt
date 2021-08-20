@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.room.Room
 import com.example.aop_part2_chapter04.model.History
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -200,16 +202,24 @@ class MainActivity : AppCompatActivity() {
 
 
         //        TODO 디비에서 모든 기록 가져오기
+        //        TODO 뷰에서 모든 기록 할당하기기
+
 
         Thread(Runnable {
             db.historyDao().getAll().reversed().forEach {
 
+                runOnUiThread {
 
+                    val historyView =
+                        LayoutInflater.from(this).inflate(R.layout.history_row, null, false)
 
+                    historyView.findViewById<TextView>(R.id.expressionTxt).text = it.expression
+                    historyView.findViewById<TextView>(R.id.resultTxt).text = "= ${it.result}}"
+                    historyLinearLayout.addView(historyView)
+                }
             }
         }).start()
 
-        //        TODO 뷰에서 모든 기록 할당하기기
     }
 
     fun closeHistoryBtnClicked(v: View) {
