@@ -171,6 +171,12 @@ class MainActivity : AppCompatActivity() {
         val expressionText = expressionTextView.text.toString()
         val resultText = calculateExpression()
 
+//        todo 디비에 넣어주는 부분
+
+        Thread(Runnable {
+            db.historyDao().insertHistory(History(null, expressionText, resultText))
+        }).start()
+
         resultTxt.text = ""
         expressionTextView.text = resultText
 
