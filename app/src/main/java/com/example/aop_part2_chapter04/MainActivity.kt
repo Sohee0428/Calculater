@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -35,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     private val historyLinearLayout: LinearLayout by lazy {
         findViewById<LinearLayout>(R.id.historyLinearLayout)
+    }
+
+    private val backspaceBtn: ImageButton by lazy {
+        findViewById<ImageButton>(R.id.backspaceBtn)
     }
 
     lateinit var db: AppDatabase
@@ -68,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             R.id.BtnMulti -> operatorButtonClicked("*")
             R.id.BtnDivider -> operatorButtonClicked("/")
             R.id.BtnModulo -> operatorButtonClicked("%")
+            R.id.backspaceBtn -> backspaceBtnClicked()
 
         }
 
@@ -214,7 +221,7 @@ class MainActivity : AppCompatActivity() {
                         LayoutInflater.from(this).inflate(R.layout.history_row, null, false)
 
                     historyView.findViewById<TextView>(R.id.expressionTxt).text = it.expression
-                    historyView.findViewById<TextView>(R.id.resultTxt).text = "= ${it.result}}"
+                    historyView.findViewById<TextView>(R.id.resultTxt).text = "= ${it.result}"
                     historyLinearLayout.addView(historyView)
                 }
             }
@@ -239,13 +246,21 @@ class MainActivity : AppCompatActivity() {
         historyLinearLayout.removeAllViews()
     }
 
-}
+    fun backspaceBtnClicked() {
 
-fun String.isNumber(): Boolean {
-    return try {
-        this.toBigInteger()
-        true
-    } catch (e: NumberFormatException) {
-        false
+        val expressionTexts = expressionTextView.text
+        expressionTextView.text =
+            expressionTexts.removeRange(expressionTexts.length - 1, expressionTexts.length)
+
+    }
+
+
+    fun String.isNumber(): Boolean {
+        return try {
+            this.toBigInteger()
+            true
+        } catch (e: NumberFormatException) {
+            false
+        }
     }
 }
