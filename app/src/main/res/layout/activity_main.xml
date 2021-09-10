@@ -293,17 +293,15 @@
                 android:textColor="@color/textColor"
                 android:textSize="24sp" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/backspaceBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="7dp"
                 android:background="@drawable/button_background"
-                android:clickable="false"
-                android:enabled="false"
-                android:stateListAnimator="@null"
-                android:text="."
-                android:textColor="@color/textColor"
-                android:textSize="24sp" />
+                android:src="@drawable/ic_baseline_backspace_24"
+                android:onClick="buttonClicked"
+                android:stateListAnimator="@null" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/resultBtn"
@@ -325,22 +323,22 @@
         android:id="@+id/historyLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="3dp"
         android:background="@drawable/history_background"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/keypadTableLayout"
-        android:layout_margin="3dp"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text=" History "
+            android:text="History"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@id/scrollView"
             app:layout_constraintEnd_toStartOf="@id/closeBtn"
             app:layout_constraintStart_toStartOf="parent"
@@ -350,6 +348,8 @@
             android:id="@+id/closeBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@null"
             android:onClick="closeHistoryBtnClicked"
             android:stateListAnimator="@null"
@@ -365,6 +365,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="10dp"
+            android:background="@drawable/scroll_background"
             app:layout_constraintBottom_toTopOf="@id/historyClearBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

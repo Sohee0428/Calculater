@@ -6,35 +6,34 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/expressionTxt"
+        android:id="@+id/resultTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:gravity="end"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/expressionTxt"
         tools:text="333" />
 
     <TextView
-        android:id="@+id/resultTxt"
+        android:id="@+id/expressionTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:gravity="end"
-        android:layout_marginTop="7dp"
         android:textColor="#aaaaaa"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expressionTxt"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="333" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
