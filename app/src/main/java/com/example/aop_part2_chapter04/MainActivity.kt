@@ -193,6 +193,7 @@ class MainActivity : AppCompatActivity() {
         isOperator = false
         hasOperator = false
 
+
     }
 
 
@@ -201,6 +202,7 @@ class MainActivity : AppCompatActivity() {
         resultTxt.text = ""
         isOperator = false
         hasOperator = false
+
     }
 
     fun historyButtonClicked(v: View) {
@@ -255,7 +257,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
     fun String.isNumber(): Boolean {
+//        확장함수
         return try {
             this.toBigInteger()
             true
